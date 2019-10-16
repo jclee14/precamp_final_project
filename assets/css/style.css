@@ -1,0 +1,230 @@
+body {
+    background-color: white;
+    margin: 0;
+    overflow: hidden;
+}
+
+#profile-pic-container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+#profile-pic-container img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: calc(19.5vw * -1);
+    height: auto;
+    width: 39vw;
+}
+
+.circle-deco {
+    position: absolute;
+    left: 50%;
+    margin-left: calc(17vw * -1);
+    top: 50%;
+    margin-top: calc(17vw * -1);
+    width: 34vw;
+    height: 34vw;
+    background-color: #FFB339;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+#name-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#name-container div {
+    position: absolute;
+}
+
+#name-container h1 {
+    margin: 0;
+    font-family: 'Futura PT Bold', sans-serif;
+}
+
+#first-name-container {
+    top: 42%;
+    left: 20%;
+}
+
+#first-name-container h1 {
+    margin-left: 14%;
+}
+
+#name-line {
+    width: 12px;
+    height: 80%;
+    margin-top: 9%;
+    background-color: #FFB339;
+}
+
+#last-name-container {
+    top: 72%;
+    left: 40%;
+}
+
+#about-container {
+    position: absolute;
+    width: 25vw;
+    left: 5%;
+    top: 5%;
+}
+
+.content-topic {
+    font-family: 'Futura PT Heavy', sans-serif;
+    font-size: 50px;
+    margin: 0;
+}
+
+#about-container p {
+    font-family: 'Futura PT Book', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#education-container {
+    position: absolute;
+    bottom: 12%;
+    left: 5%;
+}
+
+#education-container h4 {
+    font-family: 'Futura PT Book', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+#education-container h4 span {
+    background-color: #FFB339;
+    font-weight: 600;
+}
+
+#edu-line {
+    width: 35%;
+    height: 5px;
+    background-color: #FFB339;
+}
+
+#ability-container {
+    position: absolute;
+    right: 8%;
+    top: 10%;
+}
+
+ul {
+    list-style: none;
+    font-family: 'Futura PT Medium', sans-serif;
+    font-size: 32px;
+    margin: 20px 0 0 0;
+    padding-left: 33px;
+}
+
+ul li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #FFB339;
+    font-weight: bold;
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1.5em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+#contact-btn-container {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+}
+
+button {
+    font-family: 'Futura PT Heavy', sans-serif;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+#contact-btn-container button {
+    font-size: 50px;
+    letter-spacing: 3px;
+    background-color: #FFB339;
+    border: 2px solid #FFB339;
+    color: white;
+    box-shadow: 8px 8px 20px 0 rgba(0,0,0,0.3);
+}
+
+#contact-btn-container button:hover {
+    background-color: white;
+    color: #FFB339;
+}
+
+#editor-btn-container {
+    position: absolute;
+    left: 5%;
+    bottom: 3%;
+}
+
+#editor-btn-container button {
+    font-size: 15px;
+    letter-spacing: 3px;
+    background-color: white;
+    border: 2px solid #FFB339;
+    color: #FFB339;
+}
+
+#editor-btn-container button:first-of-type:hover {
+    background-color: #FFB339;
+    color: white;
+    border: 2px solid #FFB339;
+}
+
+#editor-btn-container button:last-of-type:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+}
+
+#decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#decoration h6 {
+    position: absolute;
+    margin: 0;
+    font-family: 'Futura PT Bold', sans-serif;
+    font-weight: 500;
+    letter-spacing: 5px;
+    color: #FFB339;
+}
+
+.verticle-deco {
+    transform: rotate(-90deg);
+    /* Safari */
+    -webkit-transform: rotate(-90deg);
+    /* Firefox */
+    -moz-transform: rotate(-90deg);
+    /* IE */
+    -ms-transform: rotate(-90deg);
+    /* Opera */
+    -o-transform: rotate(-90deg);
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+}

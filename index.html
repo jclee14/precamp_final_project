@@ -32,7 +32,7 @@
 
     <div id="about-container">
         <h3 class="content-topic"><span>It's me!</span></h3>
-        <p>Creativity is the key that I use to drive my life. 
+        <p style="font-weight: 600;">Creativity is the key that I use to drive my life. 
             I love to create meaningful and productive project. 
             Furthermore, I extremely enjoy working as a team 
             because the energetic atmosphere and idea-sharing 
@@ -48,7 +48,7 @@
 
     <div id="ability-container">
         <h3 class="content-topic"><span>Yes, I do!</span></h3>
-        <ul>
+        <ul id="ability-list">
             <li>Basic HTML</li>
             <li>Basic CSS</li>
             <li>Basic Javascript</li>
@@ -66,12 +66,12 @@
     </div>
 
     <div id="contact-btn-container" class="noselect">
-        <button href="#">CONTACT</button>
+        <button onclick="contact()">CONTACT</button>
     </div>
 
     <div id="editor-btn-container" class="noselect">
-        <button href="#" style="margin-right: 10px;">EDIT</button>
-        <button href="#" class="dark-hover">DARK MODE</button>
+        <button onclick="editContent()" style="margin-right: 10px;">EDIT</button>
+        <button onclick="darkMode()" class="dark-hover">DARK MODE</button>
     </div>
 
     <div id="decoration" class="noselect">
@@ -80,6 +80,222 @@
         <h6 style="bottom: -12%; right: 26%; font-size: 360px; opacity: 0.5;">i</h6>
         <h6 style="top: 35%; right: -2%; font-size: 360px; opacity: 0.3;">a</h6>
     </div>
+
+    <div id="edit-modal-container">
+        <div id="edit-topic">Resume Editor</div>
+        <div class="edit-container" style="margin-top: 5vh; background-color: #ffc966;">
+            <form>
+                <label>Nick name</label><br>
+                <input type="text" name="nickname"><br>
+                <label>First name</label><br>
+                <input type="text" name="firstname"><br>
+                <label>Last name</label><br>
+                <input type="text" name="lastname">
+            </form>
+            <button onclick="changeName()">Change</button>
+        </div>
+        <br>
+        <div class="edit-container" style="background-color: #ffb732;">
+            <form>
+                <label>New Ability</label><br>
+                <input type="text" name="abilityname" placeholder="Enter new ability here"><br>
+            </form>
+            <button onclick="addAbility()">Add</button>
+        </div>
+        <br>
+        <div class="edit-container" style="background-color: #ffa500;">
+            <form>
+                <select id="abilities-dropdown">
+                    <option selected="true">----- Choose ability to remove -----</option>  
+                </select>
+            </form>
+            <button onclick="removeAbility()">Remove</button>
+        </div>
+        <br>
+        <div id="reEx-container">
+            <button onclick="resetEdit()">RESET</button>
+            <button onclick="closeEditor()">EXIT</button>
+        </div>
+        <div id="edit-modal-bg"></div>
+    </div>
+
+<script>
+
+    let editModal = document.getElementById("edit-modal-container");
+    editModal.style.display = "none";
+
+    let nickName = document.getElementById("nick-name");
+    let firstName = document.getElementById("first-name");
+    let lastName = document.getElementById("last-name");
+    let lastNameX = document.getElementById("last-name-extra");
+
+    //Select element from input section
+    let nickNameInput = document.getElementsByName("nickname");
+    let firstNameInput = document.getElementsByName("firstname");
+    let lastNameInput = document.getElementsByName("lastname");
+
+    nickNameInput[0].placeholder = "Jia";
+    firstNameInput[0].placeholder = "SUPAWIT";
+    lastNameInput[0].placeholder = "CHAROENWETCH";
+
+    let abilityInput = document.getElementsByName("abilityname");
+
+    // function for update ability drop-down list
+    function updateAbiDrop() {
+        var abiList = document.getElementById("ability-list").getElementsByTagName("li");
+        var abiDrop = document.getElementById("abilities-dropdown");
+
+        //Remove old abilities from select
+        for(let i=abiDrop.length-1 ; i > 0 ; i--) {
+            abiDrop.remove(i);
+        }
+
+        //Add abilities to select option
+        for(let i=0 ; i < abiList.length ; i++) {
+            let option = document.createElement("option");
+            option.text = abiList[i].innerHTML;
+            abiDrop.add(option);
+        }
+    }
+
+    //run first when open editor
+    function editContent() {
+        editModal.style.display = "block";
+
+        //Clear input field ทุกครั้งที่เปิด editor ขึ้นมา, user จะเห็น placeholder แทน
+        nickNameInput[0].value = "";
+        firstNameInput[0].value = "";
+        lastNameInput[0].value = "";
+        abilityInput[0].value = "";
+
+        updateAbiDrop();
+    }
+
+    function changeName() {
+        //Assign input value to html, ถ้า input field ว่าง จะใช้ค่าใน placeholder assign ให้แทน
+        if(nickNameInput[0].value != "") {
+            //ทำให้ชื่อเล่นเป็นตัวพิมพ์ใหญ่เฉพาะอักษรตัวแรก
+            let nickNameCap = nickNameInput[0].value.charAt(0).toUpperCase() + nickNameInput[0].value.slice(1).toLowerCase();
+
+            nickName.innerHTML = nickNameCap;
+            nickNameInput[0].placeholder = nickNameCap;
+        } else {
+            nickName.innerHTML = nickNameInput[0].placeholder
+        }
+
+        if(firstNameInput[0].value != "") {
+            firstName.innerHTML = firstNameInput[0].value.toUpperCase();
+            firstNameInput[0].placeholder = firstNameInput[0].value.toUpperCase();
+        } else {
+            firstName.innerHTML = firstNameInput[0].placeholder;
+        }
+
+        if(lastNameInput[0].value != "") {
+            lastName.innerHTML = lastNameInput[0].value.toUpperCase();
+            lastNameX.innerHTML = lastNameInput[0].value.toUpperCase();
+            lastNameInput[0].placeholder = lastNameInput[0].value.toUpperCase();
+        } else {
+            lastName.innerHTML = lastNameInput[0].placeholder;
+            lastNameX.innerHTML = lastNameInput[0].placeholder;
+        }
+    }
+
+    function addAbility() {
+        let abiList = document.getElementById("ability-list");
+        let node = document.createElement("li");
+
+        let abiDrop = document.getElementById("abilities-dropdown");
+        let option = document.createElement("option");
+
+        if(abilityInput[0].value != "") {
+
+            //Make first letter in each word capitalize
+            let capText = abilityInput[0].value.toLowerCase()
+                .split(' ')
+                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(' ');
+
+            let textnode = document.createTextNode(capText);
+            node.appendChild(textnode);
+            abiList.appendChild(node); 
+
+            option.text = capText;
+            abiDrop.add(option);
+        }
+
+        abilityInput[0].value = "";
+    }
+
+    function removeAbility() {
+        var abiDrop = document.getElementById("abilities-dropdown");
+        var abiDropOpt = abiDrop.getElementsByTagName("option");
+
+        let abiList = document.getElementById("ability-list");
+
+        //เริ่ม check ที่ index[1] เพราะ index[0] คือ drop-down description
+        for(let i = 1 ; i < abiDrop.length ; i++) {
+            if(abiDrop.value == abiDropOpt[i].innerHTML) {
+                abiDrop.remove(i);
+                abiList.removeChild(abiList.children[i-1]);
+            }
+        } 
+    }
+
+    function resetEdit() {
+        nickName.innerHTML = "Jia";
+        firstName.innerHTML = "SUPAWIT";
+        lastName.innerHTML = "CHAROENWETCH";
+        lastNameX.innerHTML = "CHAROENWETCH";
+
+        nickNameInput[0].placeholder = "Jia";
+        firstNameInput[0].placeholder = "SUPAWIT";
+        lastNameInput[0].placeholder = "CHAROENWETCH";
+
+        //Remove all abilities from ul
+        let abiList = document.getElementById("ability-list");
+        abiList.innerHTML = "";
+
+        //Add the original abilities
+        abilityArr = ["Basic HTML","Basic CSS","Basic Javascript","Graphic Design","Motion Graphic","Video Edit","3D Animation"];
+        
+        for(let i=0 ; i < abilityArr.length ; i++) {
+            let node = document.createElement("LI");
+            let textnode = document.createTextNode(abilityArr[i]);
+            node.appendChild(textnode);
+            abiList.appendChild(node);
+        }
+
+        updateAbiDrop();
+    }
+
+    function closeEditor() {
+        editModal.style.display = "none";
+    }
+
+    function darkMode() {
+        document.getElementsByTagName("BODY")[0].classList.toggle("darkMode");
+        document.getElementsByClassName("circle-deco")[0].classList.toggle("white-bg");
+        document.getElementById("about-container").classList.toggle("white-cl");
+        document.getElementById("ability-container").classList.toggle("white-cl");
+        document.getElementById("education-container").classList.toggle("white-cl");
+        document.getElementById("first-name").classList.toggle("white-name");
+        document.getElementById("last-name-extra").classList.toggle("white-name");
+
+        //Toggle font-weight on about <p>
+        let aboutP = document.getElementsByTagName("p")[0];
+        if (aboutP.style.fontWeight === "600") {
+            aboutP.style.fontWeight = "500";
+        } else {
+            aboutP.style.fontWeight = "600";
+        }
+    }
+
+    function contact() {
+        alert("jiapsuic@gmail.com");
+    }
+
+</script>
+
 </body>
 
 </html>

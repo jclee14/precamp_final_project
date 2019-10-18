@@ -131,13 +131,13 @@ body {
 }
 
 #first-name-container h1 {
-    margin-left: 14%;
+    margin-left: 40px;
 }
 
 #name-line {
     width: 12px !important;
-    height: 80%;
-    margin-top: 9%;
+    height: 100%;
+    /* margin-top: 9%; */
     background-color: #FFB339;
 }
 
@@ -145,7 +145,7 @@ body {
     #nick-name {
         font-size: 7.8vw;
         letter-spacing: 1vw;
-        margin-bottom: -7% !important;
+        /* margin-bottom: -7% !important; */
     }
 
     #first-name {
@@ -187,9 +187,9 @@ body {
         margin-left: 3% !important;
     }
 
-    #name-line {
+/*     #name-line {
         margin-top: 2.5%;
-    }
+    } */
 }
 
 @media only screen and (max-width: 767px) {
@@ -237,7 +237,6 @@ body {
 
 #about-container p {
     font-family: 'Futura PT Book', sans-serif;
-    font-weight: 600;
     font-size: 18px;
     text-align: justify;
 }
@@ -484,4 +483,122 @@ button {
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Opera and Firefox */
+}
+
+#edit-modal-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    text-align: center;
+}
+
+#edit-topic {
+    font-family: 'Futura PT Medium', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    color: black;
+    background-color: #FFB339;
+    z-index: 1;
+}
+
+.edit-container {
+    display: inline-block;
+    width: 460px;
+    /* background-color: #FFB339; */
+    padding: 20px 40px;
+    margin: 0;
+}
+
+@media only screen and (max-width: 575px) {
+    .edit-container {
+        width: 80%;
+    }
+}
+
+.edit-container form {
+    font-family: 'Futura PT Book', sans-serif;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 600;
+    color: black !important;
+}
+
+.edit-container input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.edit-container select {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.edit-container button {
+    font-size: 15px;
+    border: 2px solid #FFB339;
+    background-color: white;
+    width: 100%;
+}
+
+.edit-container button:hover {
+    border: 2px solid white;
+    background-color: #FFB339;
+    color: white;
+}
+
+#reEx-container {
+    margin-top: 20px;
+}
+
+#reEx-container button {
+    margin: 0 10px;
+}
+
+#reEx-container button:hover {
+    background-color: #FFB339;
+}
+
+#edit-modal-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.darkMode {
+    background-color: #101010;
+    color: #FFB339;
+}
+
+.white-bg {
+    background-color: white;
+}
+
+.white-cl {
+    color: white !important;
+}
+
+@media only screen and (max-width: 1199px) {
+    .white-name {
+        color: white !important;
+    }
+}
+
+button:focus {
+    outline: 0;
 }

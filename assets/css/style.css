@@ -402,10 +402,10 @@ button {
     }
 }
 
-#contact-btn-container button:hover {
+/* #contact-btn-container button:hover {
     background-color: white;
     color: #FFB339;
-}
+} */
 
 #editor-btn-container {
     position: absolute;
